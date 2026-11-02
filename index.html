@@ -939,7 +939,7 @@
 
             try {
                 if (window.db && window.appId) {
-                    const { doc: docRef, setDoc } = await import("https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js");
+                    const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js");
                     await setDoc(doc(window.db, 'artifacts', window.appId, 'public', 'data', 'access_keys', newKey), keyData);
                     showToast(`Successfully generated key: ${newKey}`, "success");
                 }
@@ -1007,8 +1007,8 @@
             if (!window.isAdmin) return;
             try {
                 if (window.db && window.appId) {
-                    const { doc: docRef, deleteDoc } = await import("https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js");
-                    await deleteDoc(docRef(window.db, 'artifacts', window.appId, 'public', 'data', 'access_keys', keyId));
+                    const { doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js");
+                    await deleteDoc(doc(window.db, 'artifacts', window.appId, 'public', 'data', 'access_keys', keyId));
                     showToast(`Deleted key ${keyId}`, "success");
                 }
             } catch (e) {
